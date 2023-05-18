@@ -52,6 +52,10 @@ header {
     padding: 7vw;
 }
 
+.in-line {
+    flex-direction: row;
+}
+
 
 button {
     width: 25%;

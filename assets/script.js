@@ -12,7 +12,7 @@ startBtn.addEventListener("click", startQuiz);
 but1.addEventListener("click", selectAnswer);
 
 //global variables
-var secondsLeft = 10;
+var secondsLeft = 60;
 
 
 //start quiz function
@@ -24,6 +24,8 @@ function startQuiz() {
 }
 //answer function
 function selectAnswer() {
+    //if answer is wrong do this
+    secondsLeft-=5;
 
 
 }

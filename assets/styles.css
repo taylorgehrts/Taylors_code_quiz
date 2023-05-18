@@ -20,7 +20,7 @@ header {
 
 
 
-.container {
+#question-container {
     display: flex;
     border: solid red .5px;
     flex-direction: column;
@@ -28,6 +28,20 @@ header {
     
     
 }
+
+.hide {
+    display: none;
+}
+
+
+#start-container {
+    display: flex;
+    border: solid red .5px;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
 
 button {
     width: 25%;
@@ -37,9 +51,14 @@ button {
     border-radius: 6px;
     background-color: rgb(202, 183, 220);
 }
+button:hover {
+    background-color: rgb(183, 144, 218);
+}
 
 .outcome {
     padding-left: 31vw;
 }
+
+
 
 /*use display none to turn off sections??

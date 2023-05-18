@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>CODE QUIZ</title>
     <link rel="stylesheet" href="./assets/styles.css">
 </head>
+
 <body>
     <Header>
         <p class="leftHead">High Scores</p>
@@ -14,21 +16,34 @@
     </Header>
 
     <div class="container">
-        <h2 class="question">place holder for code questions</h2>
-        <button id="but1">answer1</button>
-        <button id="but2">answer2</button>
-        <button id="but3">answer3</button>
-        <button id="but4">answer4</button>
+        <div id="questionHide" class="hide">
+            <div id="question-container">
+                <h2 class="question">place holder for code questions</h2>
+                <button id="but1">answer1</button>
+                <button id="but2">answer2</button>
+                <button id="but3">answer3</button>
+                <button id="but4">answer4</button>
+            </div>
+        </div>
+        <div id="startHide">
+            <div id="start-container">
+                <h2>Welcome to the code quiz challenge you will start with 60 seconds on the clock and each time you get
+                    a wrong answer 5 seconds will be deducted from your score. Good luck</h2>
+                <button id="startbut">START</button>
 
+            </div>
+
+        </div>
     </div>
 
     <div class="outcome">correct or incorect</div>
-    
 
 
 
 
 
-    <script src ="./assets/script.js"></script>
+
+    <script src="./assets/script.js"></script>
 </body>
+
 </html>

@@ -40,6 +40,16 @@ header {
     flex-direction: column;
     text-align: center;
     align-items: center;
+    padding: 7vw;
+}
+
+#finish-container {
+    display: flex;
+    border: solid red .5px;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 7vw;
 }
 
 

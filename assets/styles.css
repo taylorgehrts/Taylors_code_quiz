@@ -1,0 +1,45 @@
+* {
+    background-color: antiquewhite;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+header {
+    display: flex;
+    border: solid red 0.5px;
+    justify-content: space-between;
+}
+
+.leftHead {
+    padding-left: 1vw;
+}
+
+.rightHead {
+    padding-right: 1vw;
+}
+
+
+
+.container {
+    display: flex;
+    border: solid red .5px;
+    flex-direction: column;
+    padding-left: 30vw;
+    
+    
+}
+
+button {
+    width: 25%;
+    margin: 2vh;
+    cursor: pointer;
+    border: solid black .5px;
+    border-radius: 6px;
+    background-color: rgb(202, 183, 220);
+}
+
+.outcome {
+    padding-left: 31vw;
+}
+
+/*use display none to turn off sections??

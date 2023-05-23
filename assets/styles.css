@@ -33,6 +33,13 @@ header {
 
 }
 
+.outcome {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
 .hide {
     display: none;
 }

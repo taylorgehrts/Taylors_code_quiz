@@ -172,6 +172,7 @@ function selectAnswer(event) {
     if (selectedAnswer === currentQuestion.correctAnswer) {
         // Answer is correct
         outCome.textContent = "Correct";
+        outCome.style.color = "green";
         score++;
     } else {
         // Answer is wrong, deduct time
@@ -183,6 +184,7 @@ function selectAnswer(event) {
             return;
         }
         outCome.textContent = "Wrong";
+        outCome.style.color = "red";
     }
     //Move to next question
     currentQuestionIndex++;
@@ -310,4 +312,5 @@ function highScoreScreen() {
   
 //todo
 //style
+// fix the bug of when hitting the highscore button it appends the list over and over
 

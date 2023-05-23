@@ -12,6 +12,10 @@ header {
 
 .leftHead {
     padding-left: 1vw;
+    width: 10vw;
+    border: none;
+    background-color: antiquewhite;
+    background-color: none;
 }
 
 .rightHead {
@@ -44,6 +48,15 @@ header {
 }
 
 #finish-container {
+    display: flex;
+    border: solid red .5px;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 7vw;
+}
+
+#highScore-container {
     display: flex;
     border: solid red .5px;
     flex-direction: column;

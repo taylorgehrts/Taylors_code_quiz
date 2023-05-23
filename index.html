@@ -11,7 +11,7 @@
 
 <body>
     <Header>
-        <p class="leftHead">High Scores</p>
+        <button id = highScoreBtn class="leftHead">High Scores</button>
         <p class="rightHead timeLeft"></p>
     </Header>
 
@@ -38,24 +38,27 @@
                 <p>your final score is:</p>
                 <p id="score"></p>
 
-                <form>
+                <form id = "submit-form">
                     <label for="initials">initials:</label>
                     <input class="text-input" id="initials" type="text" placeholder="First & Last initials" />
-                    <button id = submit>Submit</button>
+                    <button id = "submit" >Submit</button>
                 </form>
 
             </div>
         </div>
         <div id="highScoreHide" class="hide">
             <div id="highScore-container">
+                <h1>HIGH SCORES</h1>
                 <ol>
 
                 </ol>
+                <button id="clearScoresBtn">Clear High Scores</button>
+                <p id="tryAgain">Reload page to try again</p>
             </div>
 
     </div>
 
-    <div class="outcome"></div>
+    <div id="outComeHide" class="outcome"></div>
 
 
 

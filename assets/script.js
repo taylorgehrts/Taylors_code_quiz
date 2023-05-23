@@ -2,18 +2,24 @@
 const startBtn = document.getElementById("startbut");
 var answerButtons = document.querySelectorAll(".answerBtn");
 //new
-var submit = document.getElementById("submit");
+//var submit = document.getElementById("submit");
 
 //Document elements
 const startHide = document.getElementById("startHide");
 const questHide = document.getElementById("questionHide");
 const finishHide = document.getElementById("finishHide");
+const highScoreHide = document.getElementById("highScoreHide");
+const outComeHide = document.getElementById('outComeHide');
 var timeLeft = document.querySelector(".timeLeft");
 var questionText = document.querySelector(".question");
-var outCome = document.querySelector(".outcome")
+var outCome = document.querySelector(".outcome");
 //new
-var scoreElement = document.getElementById("score")
-var initialsInput = document.querySelector("initials")
+var scoreElement = document.getElementById("score");
+var initialsInput = document.getElementById("initials");
+var submitForm = document.getElementById("submit-form");
+var submittedInitials = localStorage.getItem("initialsText")
+var highScoreBtn = document.getElementById("highScoreBtn")
+
 
 var score = 0;
 var initailStore = [];
@@ -187,6 +193,7 @@ function selectAnswer(event) {
         displayQuestion(nextQuestion);
     } else {
         // No more questions, end the quiz
+        secondsLeft = 0;
         endQuiz();
     }
 }
@@ -211,30 +218,96 @@ function endQuiz() {
     clearInterval(timeInterval);
     questHide.classList.add("hide");
     finishHide.classList.remove("hide");
+    outComeHide.classList.add("hide");
     scoreElement.innerHTML = score;
 }
 
 // Function for submit// new
-function submitScore() {
-    submit.addEventListener("submit", function(event) {
-        event.preventDefault();
-        var initialsText = initialsInput.ariaValueMax.trim();
-
-        //return if nothing entered
-        if (initialsText === "") {
-            return;
-        }
-    
+//event listner for submit button
+submitForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    var initialsText = initialsInput.value.trim();
+    //return if nothing entered
+    if (initialsText === "") {
+        return;
+    }
     initailStore.push(initialsText);
     initialsInput.value = "";
-   
+    localStorage.setItem("initials", initialsText);
+    finishHide.classList.add("hide");
+    highScoreHide.classList.remove("hide");
+    highScoreScreen()
+});
+function highScoreScreen() {
+    var highScoreList = document.querySelector("#highScore-container ol");
+    var clearBtn = document.getElementById("clearScoresBtn");
+  
+    // Clear existing list items if the button is clicked
+    clearBtn.addEventListener("click", function () {
+      highScoreList.innerHTML = "";
+      initailStore = [];
+      score = 0;
+      localStorage.removeItem("highScores");
+    });
+  
+    // Retrieve existing high scores from local storage
+    var storedHighScores = localStorage.getItem("highScores");
+  
+    // Parse existing high scores from local storage if they exist
+    var highScores = storedHighScores ? JSON.parse(storedHighScores) : [];
+  
+    // Sort high scores in descending order based on the score value
+    highScores.sort(function (a, b) {
+      return b.score - a.score;
+    });
+  
+    // Append stored high scores to the high score list if they exist
+    if (highScores.length > 0) {
+      highScores.forEach(function (item) {
+        var listItem = document.createElement("li");
+        listItem.textContent = item.initials + " - " + item.score;
+        highScoreList.appendChild(listItem);
+      });
+    }
+  
+    // Append current initials and score to the high score list
+    if (initailStore.length > 0 && score > 0) {
+      var currentItem = {
+        initials: initailStore.join(", "),
+        score: score
+      };
+      highScores.push(currentItem);
+  
+      // Sort the updated high scores array again
+      highScores.sort(function (a, b) {
+        return b.score - a.score;
+      });
+  
+      highScoreList.innerHTML = ""; // Clear the list before re-adding sorted items
+  
+      highScores.forEach(function (item) {
+        var listItem = document.createElement("li");
+        listItem.textContent = item.initials + " - " + item.score;
+        highScoreList.appendChild(listItem);
+      });
+  
+      // Store updated high scores in local storage
+      localStorage.setItem("highScores", JSON.stringify(highScores));
+    }
+  }
 
-})};
+  highScoreBtn.addEventListener('click', function(event) {
+    highScoreScreen();
+    questHide.classList.add("hide");
+    finishHide.classList.add("hide");
+    outComeHide.classList.add("hide");
+    startHide.classList.add('hide');
+    highScoreHide.classList.remove('hide');
+  })
 
+
+  
+  
 //todo
-// add li elements to high score
-//create event listner for submit in finish screen
-//add score and initials to local storage
-//create a clear button for local storage and impliment
-// prevent default on submit button
+//style
 

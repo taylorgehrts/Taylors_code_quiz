@@ -1,6 +1,8 @@
 //Button Elements
 const startBtn = document.getElementById("startbut");
 var answerButtons = document.querySelectorAll(".answerBtn");
+//new
+var submit = document.getElementById("submit");
 
 //Document elements
 const startHide = document.getElementById("startHide");
@@ -9,8 +11,12 @@ const finishHide = document.getElementById("finishHide");
 var timeLeft = document.querySelector(".timeLeft");
 var questionText = document.querySelector(".question");
 var outCome = document.querySelector(".outcome")
+//new
 var scoreElement = document.getElementById("score")
+var initialsInput = document.querySelector("initials")
+
 var score = 0;
+var initailStore = [];
 //Questions//
 var quizQuestions = [
     {
@@ -110,12 +116,12 @@ var quizQuestions = [
 
 
 ]
+
 //get random question//
 function getRandomQuestion() {
     var randomIndex = Math.floor(Math.random() * quizQuestions.length);
     return quizQuestions[randomIndex];
 }
-
 
 // //write question and answers to html//
 function displayQuestion(question) {
@@ -150,8 +156,8 @@ function startQuiz() {
 
     var randomQuestion = getRandomQuestion();
     displayQuestion(randomQuestion);
-
 }
+
 //answer function
 function selectAnswer(event) {
     var selectedAnswer = event.target.getAttribute("data-answer");
@@ -172,7 +178,7 @@ function selectAnswer(event) {
         }
         outCome.textContent = "Wrong";
     }
-
+    //Move to next question
     currentQuestionIndex++;
 
     if (currentQuestionIndex < quizQuestions.length) {
@@ -207,6 +213,23 @@ function endQuiz() {
     finishHide.classList.remove("hide");
     scoreElement.innerHTML = score;
 }
+
+// Function for submit// new
+function submitScore() {
+    submit.addEventListener("submit", function(event) {
+        event.preventDefault();
+        var initialsText = initialsInput.ariaValueMax.trim();
+
+        //return if nothing entered
+        if (initialsText === "") {
+            return;
+        }
+    
+    initailStore.push(initialsText);
+    initialsInput.value = "";
+   
+
+})};
 
 //todo
 // add li elements to high score

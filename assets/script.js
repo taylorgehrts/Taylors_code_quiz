@@ -208,4 +208,10 @@ function endQuiz() {
     scoreElement.innerHTML = score;
 }
 
+//todo
+// add li elements to high score
+//create event listner for submit in finish screen
+//add score and initials to local storage
+//create a clear button for local storage and impliment
+// prevent default on submit button
 

@@ -9,6 +9,8 @@ const finishHide = document.getElementById("finishHide");
 var timeLeft = document.querySelector(".timeLeft");
 var questionText = document.querySelector(".question");
 var outCome = document.querySelector(".outcome")
+var scoreElement = document.getElementById("score")
+var score = 0;
 //Questions//
 var quizQuestions = [
     {
@@ -158,6 +160,7 @@ function selectAnswer(event) {
     if (selectedAnswer === currentQuestion.correctAnswer) {
         // Answer is correct
         outCome.textContent = "Correct";
+        score++;
     } else {
         // Answer is wrong, deduct time
         if (secondsLeft > 5) {
@@ -202,6 +205,7 @@ function endQuiz() {
     clearInterval(timeInterval);
     questHide.classList.add("hide");
     finishHide.classList.remove("hide");
+    scoreElement.innerHTML = score;
 }
 
 

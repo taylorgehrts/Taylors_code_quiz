@@ -6,7 +6,7 @@
 
 header {
     display: flex;
-    border: solid red 0.5px;
+    border-bottom: solid black 2px;
     justify-content: space-between;
 }
 
@@ -20,15 +20,19 @@ header {
 
 .rightHead {
     padding-right: 1vw;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
 }
 
 
 
 #question-container {
     display: flex;
-    border: solid red .5px;
+    /* border: solid red .5px; */
     flex-direction: column;
-    padding-left: 30vw;
+    text-align: center;
+    align-items: center;
+    /* padding-left: 30vw; */
 
 
 }
@@ -47,7 +51,7 @@ header {
 
 #start-container {
     display: flex;
-    border: solid red .5px;
+    /* border: solid red .5px; */
     flex-direction: column;
     text-align: center;
     align-items: center;
@@ -56,16 +60,20 @@ header {
 
 #finish-container {
     display: flex;
-    border: solid red .5px;
+    /* border: solid red .5px; */
     flex-direction: column;
     text-align: center;
     align-items: center;
     padding: 7vw;
 }
 
+#score {
+    font-size: 200%;
+}
+
 #highScore-container {
     display: flex;
-    border: solid red .5px;
+    /* border: solid red .5px; */
     flex-direction: column;
     text-align: center;
     align-items: center;
@@ -83,17 +91,23 @@ button {
     cursor: pointer;
     border: solid black .5px;
     border-radius: 6px;
+    box-shadow: 2px 3px 2px;
     background-color: rgb(202, 183, 220);
+}
+
+#highScoreBtn {
+    box-shadow: none;
 }
 
 button:hover {
     background-color: rgb(183, 144, 218);
+    box-shadow: 1px 2px 1px;
 }
 
 .outcome {
-    padding-left: 31vw;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
 }
 
 
-
-/*use display none to turn off sections??

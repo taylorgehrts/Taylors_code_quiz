@@ -1,8 +1,6 @@
 //Button Elements
 const startBtn = document.getElementById("startbut");
 var answerButtons = document.querySelectorAll(".answerBtn");
-//new
-//var submit = document.getElementById("submit");
 
 //Document elements
 const startHide = document.getElementById("startHide");
@@ -13,7 +11,6 @@ const outComeHide = document.getElementById('outComeHide');
 var timeLeft = document.querySelector(".timeLeft");
 var questionText = document.querySelector(".question");
 var outCome = document.querySelector(".outcome");
-//new
 var scoreElement = document.getElementById("score");
 var initialsInput = document.getElementById("initials");
 var submitForm = document.getElementById("submit-form");
@@ -21,8 +18,15 @@ var submittedInitials = localStorage.getItem("initialsText")
 var highScoreBtn = document.getElementById("highScoreBtn")
 
 
+//score numbert and initial array
 var score = 0;
 var initailStore = [];
+
+//global variables
+var currentQuestionIndex = 0;
+var secondsLeft = 60;
+var timeInterval;
+
 //Questions//
 var quizQuestions = [
     {
@@ -142,17 +146,11 @@ function displayQuestion(question) {
     }
 }
 
-//Event listeners
+//Event listeners for start and answer buttons
 startBtn.addEventListener("click", startQuiz);
 answerButtons.forEach(button => {
     button.addEventListener("click", selectAnswer);
 });
-
-//global variables
-var currentQuestionIndex = 0;
-var secondsLeft = 60;
-var timeInterval;
-
 
 //start quiz function
 function startQuiz() {
@@ -200,7 +198,6 @@ function selectAnswer(event) {
     }
 }
 
-
 // Timer function
 function countDown() {
     var timeInterval = setInterval(function () {
@@ -224,8 +221,8 @@ function endQuiz() {
     scoreElement.innerHTML = score;
 }
 
-// Function for submit// new
-//event listner for submit button
+
+//event listner for initial and score submit button
 submitForm.addEventListener("submit", function (event) {
     event.preventDefault();
     var initialsText = initialsInput.value.trim();
@@ -233,13 +230,14 @@ submitForm.addEventListener("submit", function (event) {
     if (initialsText === "") {
         return;
     }
-    initailStore.push(initialsText);
+    initailStore.push(initialsText.toUpperCase());
     initialsInput.value = "";
     localStorage.setItem("initials", initialsText);
     finishHide.classList.add("hide");
     highScoreHide.classList.remove("hide");
     highScoreScreen()
 });
+//high score function including all local storage
 function highScoreScreen() {
     var highScoreList = document.querySelector("#highScore-container ol");
     var clearBtn = document.getElementById("clearScoresBtn");
@@ -297,7 +295,7 @@ function highScoreScreen() {
       localStorage.setItem("highScores", JSON.stringify(highScores));
     }
   }
-
+// high scores button
   highScoreBtn.addEventListener('click', function(event) {
     highScoreScreen();
     questHide.classList.add("hide");
@@ -306,11 +304,4 @@ function highScoreScreen() {
     startHide.classList.add('hide');
     highScoreHide.classList.remove('hide');
   })
-
-
-  
-  
-//todo
-//style
-// fix the bug of when hitting the highscore button it appends the list over and over
 

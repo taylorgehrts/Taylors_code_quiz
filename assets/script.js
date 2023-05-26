@@ -2,7 +2,7 @@
 const startBtn = document.getElementById("startbut");
 var answerButtons = document.querySelectorAll(".answerBtn");
 
-//Document elements
+//Global Document elements
 const startHide = document.getElementById("startHide");
 const questHide = document.getElementById("questionHide");
 const finishHide = document.getElementById("finishHide");
@@ -14,9 +14,10 @@ var outCome = document.querySelector(".outcome");
 var scoreElement = document.getElementById("score");
 var initialsInput = document.getElementById("initials");
 var submitForm = document.getElementById("submit-form");
-var submittedInitials = localStorage.getItem("initialsText")
-var highScoreBtn = document.getElementById("highScoreBtn")
-
+var goBack = document.getElementById("goBack");
+var tryAgain = document.getElementById("tryAgain");
+var submittedInitials = localStorage.getItem("initialsText");
+var highScoreBtn = document.getElementById("highScoreBtn");
 
 //score numbert and initial array
 var score = 0;
@@ -237,8 +238,22 @@ submitForm.addEventListener("submit", function (event) {
     highScoreHide.classList.remove("hide");
     highScoreScreen()
 });
+//event listner for go back button
+goBack.addEventListener("click", function (event) {
+    event.preventDefault();
+    location.reload();
+  });
+
+  //event listner for try again
+  tryAgain.addEventListener("click", function (event) {
+    event.preventDefault();
+    location.reload();
+  });
+   
 //high score function including all local storage
 function highScoreScreen() {
+    // make highscores button inactive while on the highscore screen
+    highScoreBtn.disabled = true;
     var highScoreList = document.querySelector("#highScore-container ol");
     var clearBtn = document.getElementById("clearScoresBtn");
   
@@ -249,6 +264,7 @@ function highScoreScreen() {
       score = 0;
       localStorage.removeItem("highScores");
     });
+
   
     // Retrieve existing high scores from local storage
     var storedHighScores = localStorage.getItem("highScores");
@@ -297,11 +313,14 @@ function highScoreScreen() {
   }
 // high scores button
   highScoreBtn.addEventListener('click', function(event) {
+    // make highscores button inactive while on the highscore screen
+    highScoreBtn.disabled = true;
     highScoreScreen();
     questHide.classList.add("hide");
     finishHide.classList.add("hide");
     outComeHide.classList.add("hide");
     startHide.classList.add('hide');
     highScoreHide.classList.remove('hide');
+    
   })
 

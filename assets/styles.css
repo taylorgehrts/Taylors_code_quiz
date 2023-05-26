@@ -52,6 +52,7 @@ header {
 #start-container {
     display: flex;
     /* border: solid red .5px; */
+    width: 100%;
     flex-direction: column;
     text-align: center;
     align-items: center;
@@ -78,6 +79,16 @@ header {
     text-align: center;
     align-items: center;
     padding: 7vw;
+    font-size: 150%;
+}
+
+ol {
+    margin-bottom: 2px;
+
+}
+
+li {
+    margin-bottom: 2px;
 }
 
 .in-line {
@@ -102,6 +113,10 @@ button {
 button:hover {
     background-color: rgb(183, 144, 218);
     box-shadow: 1px 2px 1px;
+}
+
+button:active {
+    box-shadow: .5px .5px .5px;
 }
 
 .outcome {

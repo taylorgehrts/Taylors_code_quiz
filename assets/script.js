@@ -231,6 +231,12 @@ submitForm.addEventListener("submit", function (event) {
     if (initialsText === "") {
         return;
     }
+    // Check if initialsText has more than two letters
+    if (initialsText.length > 2) {
+        // If initialsText has more than two letters, display an error message
+        alert("please only enter 2 characters")
+        return;
+    }
     initailStore.push(initialsText.toUpperCase());
     initialsInput.value = "";
     localStorage.setItem("initials", initialsText);
@@ -242,77 +248,77 @@ submitForm.addEventListener("submit", function (event) {
 goBack.addEventListener("click", function (event) {
     event.preventDefault();
     location.reload();
-  });
+});
 
-  //event listner for try again
-  tryAgain.addEventListener("click", function (event) {
+//event listner for try again
+tryAgain.addEventListener("click", function (event) {
     event.preventDefault();
     location.reload();
-  });
-   
+});
+
 //high score function including all local storage
 function highScoreScreen() {
     // make highscores button inactive while on the highscore screen
     highScoreBtn.disabled = true;
     var highScoreList = document.querySelector("#highScore-container ol");
     var clearBtn = document.getElementById("clearScoresBtn");
-  
+
     // Clear existing list items if the button is clicked
     clearBtn.addEventListener("click", function () {
-      highScoreList.innerHTML = "";
-      initailStore = [];
-      score = 0;
-      localStorage.removeItem("highScores");
+        highScoreList.innerHTML = "";
+        initailStore = [];
+        score = 0;
+        localStorage.removeItem("highScores");
     });
 
-  
+
     // Retrieve existing high scores from local storage
     var storedHighScores = localStorage.getItem("highScores");
-  
+
     // Parse existing high scores from local storage if they exist
     var highScores = storedHighScores ? JSON.parse(storedHighScores) : [];
-  
+
     // Sort high scores in descending order based on the score value
     highScores.sort(function (a, b) {
-      return b.score - a.score;
+        return b.score - a.score;
     });
-  
+
     // Append stored high scores to the high score list if they exist
     if (highScores.length > 0) {
-      highScores.forEach(function (item) {
-        var listItem = document.createElement("li");
-        listItem.textContent = item.initials + " - " + item.score;
-        highScoreList.appendChild(listItem);
-      });
+        highScores.forEach(function (item) {
+            var listItem = document.createElement("li");
+            listItem.textContent = item.initials + " - " + item.score;
+            highScoreList.appendChild(listItem);
+        });
     }
-  
+
     // Append current initials and score to the high score list
     if (initailStore.length > 0 && score > 0) {
-      var currentItem = {
-        initials: initailStore.join(", "),
-        score: score
-      };
-      highScores.push(currentItem);
-  
-      // Sort the updated high scores array again
-      highScores.sort(function (a, b) {
-        return b.score - a.score;
-      });
-  
-      highScoreList.innerHTML = ""; // Clear the list before re-adding sorted items
-  
-      highScores.forEach(function (item) {
-        var listItem = document.createElement("li");
-        listItem.textContent = item.initials + " - " + item.score;
-        highScoreList.appendChild(listItem);
-      });
-  
-      // Store updated high scores in local storage
-      localStorage.setItem("highScores", JSON.stringify(highScores));
+        var currentItem = {
+            initials: initailStore.join(", "),
+            score: score
+        };
+        highScores.push(currentItem);
+
+        // Sort the updated high scores array again
+        highScores.sort(function (a, b) {
+            return b.score - a.score;
+        });
+
+        highScoreList.innerHTML = ""; // Clear the list before re-adding sorted items
+
+        highScores.forEach(function (item) {
+            var listItem = document.createElement("li");
+            listItem.textContent = item.initials + " - " + item.score;
+            highScoreList.appendChild(listItem);
+        });
+
+        // Store updated high scores in local storage
+        localStorage.setItem("highScores", JSON.stringify(highScores));
     }
-  }
+}
 // high scores button
-  highScoreBtn.addEventListener('click', function(event) {
+highScoreBtn.addEventListener('click', function (event) {
     // make highscores button inactive while on the highscore screen
     highScoreBtn.disabled = true;
     highScoreScreen();
@@ -321,6 +327,6 @@ function highScoreScreen() {
     outComeHide.classList.add("hide");
     startHide.classList.add('hide');
     highScoreHide.classList.remove('hide');
-    
-  })
+
+})
 
